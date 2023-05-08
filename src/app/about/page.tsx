@@ -4,6 +4,7 @@ import { Card, Title, Text, Grid, Col, Flex, Metric, CategoryBar } from "@tremor
 import Donut2 from "../components/Donut2";
 import Table from "../components/Table";
 import RiskBarGraph from "../components/RiskBarGraph";
+import CardProgress from "../components/CardProgress";
 
 const subCategoryPercentageValues = [10, 25, 45, 20];
 
@@ -28,6 +29,15 @@ export default function Example() {
             <RiskBarGraph />
           </Col>
 
+          {/* <Col numColSpanLg={2}>
+            <Card className="" decoration="top" decorationColor="indigo">
+              <Text>Sales</Text>
+              <Metric>$ 34,743</Metric>
+            </Card>
+          </Col> */}
+          <Col numColSpanLg={2}>
+            <CardProgress />
+          </Col>
           {/* KPI sidebar */}
           <Col numColSpanLg={3}>
             <div className="space-y-6">
