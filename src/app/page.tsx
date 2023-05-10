@@ -13,7 +13,7 @@ export default function Example() {
     <main className="bg-slate-50 p-6 sm:p-10">
       <section className="container mx-auto">
         <Title>Dashboard</Title>
-        <Text>Lorem ipsum dolor sit amet, consetetur sadipscing elitr.</Text>
+        <Text>Monitor your company&apos;s activity at a glance.</Text>
 
         <Grid numColsLg={7} className="gap-6 mt-6">
           {/* Main section */}
