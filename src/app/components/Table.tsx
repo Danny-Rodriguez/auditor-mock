@@ -85,6 +85,8 @@ const salesPeople: {
 export default function Example() {
   return (
     <Card className="mt-6">
+      <h1 className="ml-3 mb-2 text-gray-700 text-lg font-medium">Top Assets</h1>
+      <hr className="" />
       <Table>
         <TableHead>
           <TableRow>

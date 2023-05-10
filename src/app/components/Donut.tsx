@@ -12,8 +12,8 @@ interface CityData {
   name: string;
   region: string;
   sales: number;
-  delta: string;
-  deltaType: DeltaType;
+  delta?: string;
+  deltaType?: DeltaType;
 }
 
 const cities: CityData[] = [
@@ -51,21 +51,21 @@ const cities: CityData[] = [
     sales: 190800,
     delta: "1.8%",
     deltaType: "moderateIncrease"
+  },
+  {
+    name: "Zurich",
+    region: "europe",
+    sales: 164400,
+    delta: "3.4%",
+    deltaType: "decrease"
+  },
+  {
+    name: "Vienna",
+    region: "europe",
+    sales: 139800,
+    delta: "3.1%",
+    deltaType: "moderateIncrease"
   }
-  // {
-  //   name: "Zurich",
-  //   region: "europe",
-  //   sales: 164400,
-  //   delta: "3.4%",
-  //   deltaType: "decrease"
-  // }
-  // {
-  //   name: "Vienna",
-  //   region: "europe",
-  //   sales: 139800,
-  //   delta: "3.1%",
-  //   deltaType: "moderateIncrease"
-  // }
 ];
 
 const valueFormatter = (number: number) => `${Intl.NumberFormat("us").format(number).toString()} $`;
@@ -82,23 +82,18 @@ export default function Example() {
   }, [selectedRegion]);
 
   return (
-    <Card className="mx-auto flex max-h-[348px]">
-      <div>
-        <Flex className="space-x-8" justifyContent="start" alignItems="center">
-          <Title>By City</Title>
-          <Dropdown className="max-w-min" onValueChange={value => setSelectedRegion(value)} placeholder="Region Selection">
-            {regions.map(region => (
-              <DropdownItem className="" key={region.key} value={region.key} text={region.name} />
-            ))}
-          </Dropdown>
-        </Flex>
-
-        <div>
-          <Legend categories={filteredData.map(city => city.name)} className="mt-6" />
-          <DonutChart data={filteredData} category="sales" index="name" valueFormatter={valueFormatter} className="mt-6" />
-        </div>
-      </div>
-      <List className="mt-6 ml-10">
+    <Card className="">
+      <Flex className="space-x-8" justifyContent="start" alignItems="center">
+        <Title>Sales</Title>
+        <Dropdown className="max-w-min" onValueChange={value => setSelectedRegion(value)} placeholder="Region Selection">
+          {regions.map(region => (
+            <DropdownItem key={region.key} value={region.key} text={region.name} />
+          ))}
+        </Dropdown>
+      </Flex>
+      <Legend categories={filteredData.map(city => city.name)} className="mt-6" />
+      <DonutChart data={filteredData} category="sales" index="name" valueFormatter={valueFormatter} className="mt-6" />
+      <List className="mt-6">
         {filteredData.map(city => (
           <ListItem key={city.name}>
             {city.name}
@@ -108,6 +103,13 @@ export default function Example() {
           </ListItem>
         ))}
       </List>
+      <style jsx>{`
+         {
+          /* .tremor-BadgeDelta-icon {
+          display: none;
+        } */
+        }
+      `}</style>
     </Card>
   );
 }
